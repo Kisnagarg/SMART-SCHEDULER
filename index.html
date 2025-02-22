@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Scheduler & Career Advisor</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tab-content { display: none; }
+    .active { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Smart Scheduler & Career Advisor</h1>
+    <nav>
+      <button onclick="openTab('timetable')">Custom Timetable</button>
+      <button onclick="openTab('scheduler')" id="schedulerTab" disabled>Smart Scheduler</button>
+      <button onclick="openTab('careerAdvisor')">Career Advisor</button>
+      <a href="login.html"><button>Login</button></a>
+    </nav>
+  </header>
+  
+  <main>
+    <!-- Timetable Section -->
+    <section id="timetable" class="tab-content active">
+      <h2>Custom Timetable</h2>
+      <form id="timetableForm">
+        <label for="day">Day:</label>
+        <select id="day" required>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Sunday">Sunday</option>
+        </select>
+        
+        <label for="time">Time Slot:</label>
+        <input type="time" id="time" required>
+        
+        <label for="activity">Activity:</label>
+        <input type="text" id="activity" required>
+        
+        <button type="submit">Add to Timetable</button>
+      </form>
+    
+      <div id="gridView">
+        <h3>Weekly Timetable (Grid View)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+              <th>Sunday</th>
+            </tr>
+          </thead>
+          <tbody id="timetableGrid"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Scheduling Section -->
+    <section id="scheduler" class="tab-content">
+      <h2>Smart Scheduler</h2>
+      <form id="taskForm">
+        <label for="task">Task Name:</label>
+        <input type="text" id="task" required>
+        
+        <label for="deadline">Deadline:</label>
+        <input type="datetime-local" id="deadline" required>
+        
+        <button type="submit">Add Task</button>
+      </form>
+      <div id="taskList">
+        <h3>Upcoming Tasks</h3>
+        <ul></ul>
+      </div>
+    </section>
+
+    <!-- Career Advising Section -->
+    <section id="careerAdvisor" class="tab-content">
+      <h2>Career Advisor</h2>
+      <p>Take a career quiz to get personalized advice!</p>
+      <a href="career-advisor.html">
+        <button id="careerQuizBtn">Start Career Quiz</button>
+      </a>
+      <div id="careerResults"></div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Smart Scheduler & Career Advisor</p>
+  </footer>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    const timetableForm = document.getElementById('timetableForm');
+    const timetableGrid = document.getElementById('timetableGrid');
+    const schedulerTab = document.getElementById('schedulerTab');
+    const timetableData = {};
+
+    timetableForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const day = document.getElementById('day').value;
+      const time = document.getElementById('time').value;
+      const activity = document.getElementById('activity').value;
+
+      if (!timetableData[time]) {
+        timetableData[time] = { Monday: '', Tuesday: '', Wednesday: '', Thursday: '', Friday: '', Saturday: '', Sunday: '' };
+      }
+      timetableData[time][day] = activity;
+      updateTimetable();
+      timetableForm.reset();
+
+      // Enable Scheduler Tab after Timetable Submission
+      schedulerTab.disabled = false;
+    });
+
+    function updateTimetable() {
+      timetableGrid.innerHTML = '';
+      Object.keys(timetableData).sort().forEach((time) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${time}</td>
+          <td>${timetableData[time].Monday}</td>
+          <td>${timetableData[time].Tuesday}</td>
+          <td>${timetableData[time].Wednesday}</td>
+          <td>${timetableData[time].Thursday}</td>
+          <td>${timetableData[time].Friday}</td>
+          <td>${timetableData[time].Saturday}</td>
+          <td>${timetableData[time].Sunday}</td>
+        `;
+        timetableGrid.appendChild(row);
+      });
+    }
+
+    const taskForm = document.getElementById('taskForm');
+    const taskList = document.querySelector('#taskList ul');
+
+    taskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const taskName = document.getElementById('task').value;
+      const deadline = document.getElementById('deadline').value;
+      const taskItem = document.createElement('li');
+      taskItem.textContent = `${taskName} - Due: ${deadline}`;
+      taskList.appendChild(taskItem);
+      taskForm.reset();
+    });
+  </script>
+
+  
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Student Productivity App</h1>
+        <nav>
+            <ul>
+                <li><a href="#timetable">Timetable</a></li>
+                <li><a href="#career-advisor">Career Advisor</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Timetable Section -->
+        <section id="timetable">
+            <h2>Your Timetable</h2>
+            <form id="addActivityForm">
+                <label for="activity">Add Activity:</label>
+                <input type="text" id="activity" placeholder="Enter activity name" required>
+                <label for="day">Select Day:</label>
+                <select id="day">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+                <label for="timeSlot">Select Time Slot:</label>
+                <select id="timeSlot">
+                    <option value="8:00 AM">8:00 AM</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="1:00 PM">1:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                </select>
+                <button type="submit">Add Activity</button>
+            </form>
+
+            <div class="timetable-grid">
+                <div class="grid-header">
+                    <div class="grid-item">Time</div>
+                    <div class="grid-item">Monday</div>
+                    <div class="grid-item">Tuesday</div>
+                    <div class="grid-item">Wednesday</div>
+                    <div class="grid-item">Thursday</div>
+                    <div class="grid-item">Friday</div>
+                </div>
+                <div class="grid-body">
+                    <!-- Time slots are created dynamically with JS -->
+                    <div class="grid-item">8:00 AM</div>
+                    <div class="grid-item" id="monday-8"></div>
+                    <div class="grid-item" id="tuesday-8"></div>
+                    <div class="grid-item" id="wednesday-8"></div>
+                    <div class="grid-item" id="thursday-8"></div>
+                    <div class="grid-item" id="friday-8"></div>
+
+                    <div class="grid-item">9:00 AM</div>
+                    <div class="grid-item" id="monday-9"></div>
+                    <div class="grid-item" id="tuesday-9"></div>
+                    <div class="grid-item" id="wednesday-9"></div>
+                    <div class="grid-item" id="thursday-9"></div>
+                    <div class="grid-item" id="friday-9"></div>
+
+                    <div class="grid-item">10:00 AM</div>
+                    <div class="grid-item" id="monday-10"></div>
+                    <div class="grid-item" id="tuesday-10"></div>
+                    <div class="grid-item" id="wednesday-10"></div>
+                    <div class="grid-item" id="thursday-10"></div>
+                    <div class="grid-item" id="friday-10"></div>
+
+                    <div class="grid-item">11:00 AM</div>
+                    <div class="grid-item" id="monday-11"></div>
+                    <div class="grid-item" id="tuesday-11"></div>
+                    <div class="grid-item" id="wednesday-11"></div>
+                    <div class="grid-item" id="thursday-11"></div>
+                    <div class="grid-item" id="friday-11"></div>
+
+                    <div class="grid-item">12:00 PM</div>
+                    <div class="grid-item" id="monday-12"></div>
+                    <div class="grid-item" id="tuesday-12"></div>
+                    <div class="grid-item" id="wednesday-12"></div>
+                    <div class="grid-item" id="thursday-12"></div>
+                    <div class="grid-item" id="friday-12"></div>
+
+                    <div class="grid-item">1:00 PM</div>
+                    <div class="grid-item" id="monday-1"></div>
+                    <div class="grid-item" id="tuesday-1"></div>
+                    <div class="grid-item" id="wednesday-1"></div>
+                    <div class="grid-item" id="thursday-1"></div>
+                    <div class="grid-item" id="friday-1"></div>
+
+                    <div class="grid-item">2:00 PM</div>
+                    <div class="grid-item" id="monday-2"></div>
+                    <div class="grid-item" id="tuesday-2"></div>
+                    <div class="grid-item" id="wednesday-2"></div>
+                    <div class="grid-item" id="thursday-2"></div>
+                    <div class="grid-item" id="friday-2"></div>
+
+                    <div class="grid-item">3:00 PM</div>
+                    <div class="grid-item" id="monday-3"></div>
+                    <div class="grid-item" id="tuesday-3"></div>
+                    <div class="grid-item" id="wednesday-3"></div>
+                    <div class="grid-item" id="thursday-3"></div>
+                    <div class="grid-item" id="friday-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Advisor Section -->
+        <section id="career-advisor">
+            <h2>Career Advisor</h2>
+            <form id="careerForm">
+                <label for="careerGoal">Enter your targeted career goal (e.g., Software Developer, Graphic Designer):</label>
+                <input type="text" id="careerGoal" name="careerGoal" placeholder="Enter your career goal" required>
+                <button type="submit">Get Career Roadmap</button>
+            </form>
+
+            <section id="careerPlan" style="display:none;">
+                <h3>Your Career Roadmap</h3>
+                <p id="goalDisplay"></p>
+                <div id="steps">
+                    <!-- Steps will be generated dynamically here -->
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by Your App</p>
+    </footer>
+
+    <script src="career-advisor.js"></script>
+    <script src="timetable.js"></script>
+</body>
+</html>

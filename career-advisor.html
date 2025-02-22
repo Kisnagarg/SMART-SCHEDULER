@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Quiz</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>Career Quiz</h1>
+        <p>Answer a few questions to find the best career path for you!</p>
+
+        <!-- Step 1: Select a Sector -->
+        <div id="sectorSelection">
+            <h2>Which sector are you interested in learning a new skill?</h2>
+            <select id="sector">
+                <option value="">-- Select a Sector --</option>
+                <option value="technology">Technology</option>
+                <option value="business">Business & Management</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="creative">Creative Arts & Design</option>
+                <option value="engineering">Engineering</option>
+            </select>
+            <button id="nextStep">Next</button>
+        </div>
+
+        <!-- Step 2: Dynamic Questions -->
+        <div id="questionsContainer" class="hidden">
+            <h2 id="questionTitle"></h2>
+            <div id="questionOptions"></div>
+            <button id="submitQuiz">Submit</button>
+        </div>
+
+        <!-- Step 3: Career Suggestion -->
+        <div id="careerResult" class="hidden">
+            <h2>Recommended Career Path</h2>
+            <p id="resultText"></p>
+            <button onclick="window.location.href='index.html'">Go Back</button>
+        </div>
+    </div>
+
+    <script src="career.js"></script>
+</body>
+</html>

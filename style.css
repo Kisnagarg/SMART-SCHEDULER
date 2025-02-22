@@ -1,0 +1,180 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #FDF6E3, #FAF3DD);
+  color: #343a40;
+  overflow-x: hidden;
+}
+
+header {
+  background: linear-gradient(90deg, #E0C9A8, #C5A880);
+  color: white;
+  padding: 1.5rem 0;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 1s ease-in-out;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+main {
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+button {
+  background: linear-gradient(90deg, #E0C9A8, #C5A880);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: linear-gradient(90deg, #DFC3A6, #B99976);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* Timetable Grid Enhancements */
+#gridView table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background: #FAF3DD;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+#gridView td.filled {
+  background: #C5A880;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #A88C6D;
+  box-shadow: 0 0 10px rgba(197, 168, 128, 0.6);
+  transition: 0.3s ease-in-out;
+}
+
+#gridView td.filled:hover {
+  background: #E0C9A8;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(197, 168, 128, 0.8);
+}
+
+/* Animated Form Section */
+#timetableForm, #taskForm {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border: 1px solid #E0C9A8;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+#timetableForm h3, #taskForm h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  color: #C5A880;
+  text-transform: uppercase;
+}
+
+/* Smooth Hover Effect on Task Items */
+#taskList ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #E0C9A8;
+  border: 1px solid #C5A880;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  padding: 0.8rem;
+  transition: all 0.3s ease-in-out;
+}
+
+#taskList ul li:hover {
+  transform: translateX(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Button for Career Quiz */
+#careerQuizBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #E0C9A8, #C5A880);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#careerQuizBtn:hover {
+  background: linear-gradient(90deg, #DFC3A6, #B99976);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth Page Load Animation */
+@keyframes fadeInBody {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+body {
+  animation: fadeInBody 1.5s ease-in-out;
+}

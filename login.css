@@ -1,0 +1,139 @@
+/* Full-page background with a soft gradient */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Login container */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transform: scale(0.5);
+    opacity: 0;
+    animation: popIn 0.6s ease-out forwards;
+}
+
+/* Animation for pop-in effect */
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Heading */
+h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Form layout */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels */
+label {
+    text-align: left;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Input fields */
+input {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+
+/* Change input color when clicked */
+input:focus {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Password field wrapper */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Show/Hide password icon */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+/* Icon hover effect */
+.toggle-password:hover {
+    color: #ffeb99;
+}
+
+/* Login button */
+button {
+    background: #ff7eb3;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+button:hover {
+    background: #ff4d94;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 78, 133, 0.4);
+}
+
+/* Sign-up text */
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Sign-up link */
+p a {
+    color: #ffeb99;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover effect for link */
+p a:hover {
+    color: #ffe066;
+}

@@ -37,8 +37,11 @@
           <option value="Sunday">Sunday</option>
         </select>
         
-        <label for="time">Time Slot:</label>
-        <input type="time" id="time" required>
+        <label for="startTime">Start Time:</label>
+        <input type="time" id="startTime" required>
+        
+        <label for="endTime">End Time:</label>
+        <input type="time" id="endTime" required>
         
         <label for="activity">Activity:</label>
         <input type="text" id="activity" required>
@@ -108,19 +111,17 @@
     const timetableForm = document.getElementById('timetableForm');
     const timetableGrid = document.getElementById('timetableGrid');
     const schedulerTab = document.getElementById('schedulerTab');
-    const timetableData = {};
+    const timetableData = [];
 
     timetableForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
       const day = document.getElementById('day').value;
-      const time = document.getElementById('time').value;
+      const startTime = document.getElementById('startTime').value;
+      const endTime = document.getElementById('endTime').value;
       const activity = document.getElementById('activity').value;
 
-      if (!timetableData[time]) {
-        timetableData[time] = { Monday: '', Tuesday: '', Wednesday: '', Thursday: '', Friday: '', Saturday: '', Sunday: '' };
-      }
-      timetableData[time][day] = activity;
+      timetableData.push({ day, startTime, endTime, activity });
       updateTimetable();
       timetableForm.reset();
 
@@ -130,37 +131,21 @@
 
     function updateTimetable() {
       timetableGrid.innerHTML = '';
-      Object.keys(timetableData).sort().forEach((time) => {
+      timetableData.forEach(({ day, startTime, endTime, activity }) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>${time}</td>
-          <td>${timetableData[time].Monday}</td>
-          <td>${timetableData[time].Tuesday}</td>
-          <td>${timetableData[time].Wednesday}</td>
-          <td>${timetableData[time].Thursday}</td>
-          <td>${timetableData[time].Friday}</td>
-          <td>${timetableData[time].Saturday}</td>
-          <td>${timetableData[time].Sunday}</td>
+          <td>${startTime} - ${endTime}</td>
+          <td>${day === 'Monday' ? activity : ''}</td>
+          <td>${day === 'Tuesday' ? activity : ''}</td>
+          <td>${day === 'Wednesday' ? activity : ''}</td>
+          <td>${day === 'Thursday' ? activity : ''}</td>
+          <td>${day === 'Friday' ? activity : ''}</td>
+          <td>${day === 'Saturday' ? activity : ''}</td>
+          <td>${day === 'Sunday' ? activity : ''}</td>
         `;
         timetableGrid.appendChild(row);
       });
     }
-
-    const taskForm = document.getElementById('taskForm');
-    const taskList = document.querySelector('#taskList ul');
-
-    taskForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const taskName = document.getElementById('task').value;
-      const deadline = document.getElementById('deadline').value;
-      const taskItem = document.createElement('li');
-      taskItem.textContent = `${taskName} - Due: ${deadline}`;
-      taskList.appendChild(taskItem);
-      taskForm.reset();
-    });
   </script>
-
-  
 </body>
 </html>
